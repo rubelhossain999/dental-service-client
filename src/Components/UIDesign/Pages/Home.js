@@ -1,9 +1,13 @@
+import Feature from './Feature';
 import Hero from './Hero';
+import ThreeService from './ThreeService';
 
 const Home = () => {
     return (
         <div>
-            <Hero/>
+            <Hero />
+            <Feature />
+            <ThreeService></ThreeService>
         </div>
     );
 };

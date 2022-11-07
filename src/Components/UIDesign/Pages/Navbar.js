@@ -10,7 +10,7 @@ const Navbar = () => {
             <li className='hover:bg-slate-500 hover:text-gray-50 hover:rounded-xl'><Link to="/courses">LogOut</Link></li>
             <li className='hover:bg-slate-500 hover:text-gray-50 hover:rounded-xl'><Link to="/faq">Login</Link></li>
             <li className='hover:bg-slate-500 hover:text-gray-50 hover:rounded-xl'><Link to="/faq">Sign up</Link></li>
-            <li className='hover:bg-slate-500 hover:text-gray-50 hover:rounded-xl'><Link to="/profile">Services</Link></li>
+            <li className='hover:bg-slate-500 hover:text-gray-50 hover:rounded-xl'><Link to="/services">Services</Link></li>
         </>
     );
 };

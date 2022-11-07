@@ -1,13 +1,26 @@
-import React, { createContext } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 export const AuthContext = createContext();
 
 const AuthContextdata = ({ children }) => {
 
-    const info = { displayName: "Rubel Hossain" }
+    const [datas, setData] = useState(); 
 
-    const authINFO = { info }
 
+
+    /// Data load From Mongodb for the UI
+    useEffect(()=>{
+        const url = "http://localhost:5000/users";
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            setData(data);
+        })
+        
+    }, []);
+
+
+    const authINFO = { datas }
     return (
         <AuthContext.Provider value={authINFO}>
             {children}

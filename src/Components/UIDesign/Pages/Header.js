@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 
 const Header = () => {
+
     return (
-        <div className='bg-white sticky top-0 z-40'>
+        <div className='bg-white sticky top-0 z-40 border-b-2'>
             <div className="navbar lg:w-4/5 m-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
