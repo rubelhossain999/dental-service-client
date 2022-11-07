@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../ContextAPI/AuthContextdata';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
     const { datas } = useContext(AuthContext);
@@ -30,14 +31,14 @@ const Services = () => {
                                     <p className="text-2xl font-bold leading-5">{datas.name}</p>
                                 </a>
                                 <p className="mb-4 text-gray-700">
-                                    {datas.desc}
+                                    {datas.description.slice(0, 300) + '...' } <Link className="text-orange-600" to={`/users/${datas._id}`}>See More</Link>
                                 </p>
                                 <div className="flex space-x-4">
                                     <div className="mr-2">
                                         <button className='btn-warning px-2 py-1 font-medium uppercase rounded-md'>Details</button>
                                     </div>
                                     <div className="mr-2">
-                                        <button className='btn-success px-2 py-1 rounded-md'>Price: 45 USD</button>
+                                        <button className='btn-success px-2 py-1 rounded-md'>Price: {datas.price} USD</button>
                                     </div>
                                 </div>
                             </div>
