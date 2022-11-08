@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddService from "../Components/UIDesign/Pages/AddService";
 import Blogs from "../Components/UIDesign/Pages/Blogs";
 import Error from "../Components/UIDesign/Pages/Error";
 import Home from "../Components/UIDesign/Pages/Home";
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <PrivateRoute><Profile></Profile></PrivateRoute>
+      },
+      {
+        path: '/addservice',
+        element: <PrivateRoute><AddService></AddService></PrivateRoute>
       },
       {
         path: '/blogs',
