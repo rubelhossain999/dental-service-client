@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Logout from '../../Components/UIDesign/Pages/Logout';
+import { AuthContext } from '../../ContextAPI/AuthContextdata';
 
 const Profile = () => {
+    const { user } = useContext(AuthContext);
+    console.log(user);
     return (
-        <div className='w-9/12 m-auto lg:flex'>
+        <div className='w-9/12 m-auto lg:flex mb-20'>
             <div className="h-full p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100">
                 <div className="flex items-center p-2 space-x-4">
-                    <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-full dark:bg-gray-500" />
+                    <img src={user?.photoURL} alt="" className="w-12 h-12 rounded-full dark:bg-gray-500" />
                     <div>
-                        <h2 className="text-lg font-semibold">Leroy Jenkins</h2>
+                        <h2 className="text-lg font-semibold">{user?.displayName}</h2>
                         <span className="flex items-center space-x-1">
-                            <a rel="noopener noreferrer" href="/" className="text-xs hover:underline dark:text-gray-400">View profile</a>
+                            <a rel="noopener noreferrer" href="/" className="text-xs hover:underline dark:text-gray-400">{user?.email? 
+                        <span className='text-lime-600'>Verified</span>
+                        :
+                        <span className='text-orange-600'>Unverified</span>
+                        }</a>
                         </span>
                     </div>
                 </div>
@@ -48,7 +55,7 @@ const Profile = () => {
                     </ul>
                 </div>
             </div>
-            <div className='w-full'>
+            <div className='w-9/12 p-10'>
                 <p>This my Habit</p>
                 </div>
         </div>

@@ -1,17 +1,16 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../ContextAPI/AuthContextdata';
 import SocialAuth from './SocialAuth';
 
 const Login = () => {
-    const {userLogin, setLoading } = useContext(AuthContext);
-    const [error, setError] = useState('');
-    const location = useLocation();
+    const { userLogin } = useContext(AuthContext);
+    const [error, setError] = useState();
+    //const location = useLocation();
     const navigator = useNavigate();
-    
 
-    const from = location.state?.from?.pathname || '/';
+    //const from = location.state?.from?.pathname || '/';
     const handlelogin = event => {
         event.preventDefault();
 
@@ -19,15 +18,14 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(email, password);
-
         userLogin(email, password)
             .then(result => {
                 const user = result.user;
-                setError();
+                console.log(user);
                 form.reset();
-                    navigator(from, {replace: true});
-                    toast.success("User Login is Success!!");
+                setError('');
+                toast.success("User Login is Success!!");
+                navigator('/profile');
             })
             .catch(error => {
                 console.error(error);
@@ -52,10 +50,8 @@ const Login = () => {
                             </div>
                         </div>
                         <button className="block w-full p-3 text-center rounded-sm bg-orange-300 text-black dark:text-gray-900 dark:bg-violet-400 font-bold">LOGIN IN</button>
-                        <div className='text-center text-red-600'>
-                            {error}
-                        </div>
                     </form>
+                        <div className='text-red-500'>{error}</div>
                     <div className="flex items-center pt-4 space-x-1">
                         <div className="flex-1 h-px sm:w-16 bg-white dark:bg-gray-700"></div>
                         <p className="px-3 text-sm dark:text-gray-400">Login with social accounts</p>

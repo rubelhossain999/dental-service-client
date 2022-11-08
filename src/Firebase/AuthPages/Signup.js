@@ -1,11 +1,12 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../ContextAPI/AuthContextdata';
 import SocialAuth from './SocialAuth';
 
 const Signup = () => {
-    const { user, userRegistration} = useContext(AuthContext);
+    const {userRegistration} = useContext(AuthContext);
+    const [error, setError] = useState();
     const navigator = useNavigate()
 
     const handleSignup = event => {
@@ -21,11 +22,13 @@ const Signup = () => {
         userRegistration(email, password)
         .then(result => {
             form.reset();
+            setError('');
             navigator('/login');
             toast.success('Please Verify your email address before login!!');
         })
         .catch(error => {
             console.error(error);
+            setError(error.message);
         })
 
     }
@@ -38,15 +41,15 @@ const Signup = () => {
                         <form onSubmit={handleSignup}  className="space-y-6 ng-untouched ng-pristine ng-valid">
                             <div className="space-y-1 text-sm">
                                 <label className="block dark:text-gray-400">Username</label>
-                                <input type="text" name="name" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-slate-50 dark:text-gray-100 focus:dark:border-violet-400" required />
+                                <input type="text" name="name" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-slate-50 text-black focus:dark:border-violet-400" required />
                             </div>
                             <div className="space-y-1 text-sm">
                                 <label className="block dark:text-gray-400">Email</label>
-                                <input type="email" name="email" id="email" placeholder="Email Type" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-slate-50 dark:text-gray-100 focus:dark:border-violet-400" required />
+                                <input type="email" name="email" id="email" placeholder="Email Type" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-slate-50 text-black focus:dark:border-violet-400" required />
                             </div>
                             <div className="space-y-1 text-sm">
                                 <label className="block dark:text-gray-400">Photo URL</label>
-                                <input type="text" name="photoURL" id="photo" placeholder="Your Photo URL" className="w-full px-4 py-3 rounded-md dark:bg-slate-50 dark:text-gray-100 focus:dark:border-violet-400" required />
+                                <input type="text" name="photoURL" id="photo" placeholder="Your Photo URL" className="w-full px-4 py-3 rounded-md dark:bg-slate-50 text-black focus:dark:border-violet-400" required />
                             </div>
                             <div className="space-y-1 text-sm">
                                 <label className="block dark:text-gray-400">Password</label>
@@ -57,7 +60,7 @@ const Signup = () => {
                             </div>
                             <button className="block w-full p-3 bg-orange-300 font-bold text-black text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">Registration Here</button>
                             <div className='text-center text-red-600'>
-                            <p>Error</p>
+                            <p>{error}</p>
                             </div>
                         </form>
                         <div className="flex items-center pt-4 space-x-1">
