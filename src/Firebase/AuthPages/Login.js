@@ -1,16 +1,16 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../ContextAPI/AuthContextdata';
 import SocialAuth from './SocialAuth';
 
 const Login = () => {
-    const { userLogin } = useContext(AuthContext);
-    const [error, setError] = useState();
-    //const location = useLocation();
+    const {user, userLogin } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const location = useLocation();
     const navigator = useNavigate();
 
-    //const from = location.state?.from?.pathname || '/';
+    const from = location.state?.from?.pathname || '/';
     const handlelogin = event => {
         event.preventDefault();
 
@@ -25,7 +25,7 @@ const Login = () => {
                 form.reset();
                 setError('');
                 toast.success("User Login is Success!!");
-                navigator('/profile');
+                navigator(from, {replace: true});
             })
             .catch(error => {
                 console.error(error);

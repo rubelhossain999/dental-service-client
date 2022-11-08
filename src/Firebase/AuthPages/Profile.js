@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Logout from '../../Components/UIDesign/Pages/Logout';
 import { AuthContext } from '../../ContextAPI/AuthContextdata';
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
-    console.log(user);
     return (
         <div className='w-9/12 m-auto lg:flex mb-20'>
             <div className="h-full p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100">

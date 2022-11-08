@@ -15,7 +15,6 @@ const SocialAuth = () => {
         googleLoginPop(googleprovider)
         .then( res => {
             const user = res.user;
-            console.log(user);
             toast.success("User Login is Success!!");
             navigator('/profile')
         })

@@ -50,13 +50,10 @@ const AuthContextdata = ({ children }) => {
     /// unsubscribe with loader
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            if (currentUser === null || currentUser.emailVerified) {
-
-                setUser(currentUser);
-            }
+            console.log('inside Auth State Change', currentUser);
+            setUser(currentUser);
             setLoading(false);
-
-        })
+        });
 
         return () => {
             unsubscribe();

@@ -9,6 +9,7 @@ import Forgotpass from "../Firebase/AuthPages/Forgotpass";
 import Login from "../Firebase/AuthPages/Login";
 import Profile from "../Firebase/AuthPages/Profile";
 import Signup from "../Firebase/AuthPages/Signup";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -25,11 +26,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/reviews',
-        element: <Reviews></Reviews>
+        element: <PrivateRoute><Reviews></Reviews></PrivateRoute>
       },
       {
         path: '/profile',
-        element: <Profile></Profile>
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>
       },
       {
         path: '/blogs',

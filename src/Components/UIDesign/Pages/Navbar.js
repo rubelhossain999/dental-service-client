@@ -5,13 +5,12 @@ import Logout from './Logout';
 
 const Navbar = () => {
     const { user } = useContext(AuthContext);
-    console.log(user);
 
     return (
         
         <>
         <li className='hover:bg-slate-500 hover:text-gray-50 hover:rounded-xl'><Link to="/">Home</Link></li>
-            {user?.email ?
+            {user?.uid ?
                 <>
                     <li className='hover:bg-slate-500 hover:text-gray-50 hover:rounded-xl'><Link to="/reviews">My Review</Link></li>
                     <Logout></Logout>
