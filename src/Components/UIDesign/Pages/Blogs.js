@@ -3,32 +3,45 @@ import React from 'react';
 const Blogs = () => {
     return (
         <div className='bg-slate-600 dark:bg-gray-800'>
+
             <section className="dark:text-gray-100">
                 <div className="container flex flex-col justify-center p-4 mx-auto md:p-8">
                     <p className="p-2 text-sm font-medium tracking-wider text-center uppercase text-white mt-16">Questions Answered</p>
                     <h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl text-white">Questions About Satu Dental</h2>
                     <div className="grid gap-10 md:gap-8 sm:p-3 grid-cols-1 lg:px-12 xl:px-32 mb-16">
                         <div>
-                            <h3 className="font-extrabold text-3xl text-white">What is cors in react?</h3>
-                            <p className="mt-1 text-white dark:text-gray-400">In ReactJS, Cross-Origin Resource Sharing (CORS) refers back to the technique that lets in you to make requests to the server deployed at a exclusive domain. As a reference, if the frontend and backend are at  exclusive domains, we want CORS there.</p>
+                            <h3 className="font-extrabold text-3xl text-white">Difference between SQL and NoSQL</h3>
+                            <p className="mt-1 text-white dark:text-gray-400">SQL is the programming language used to interface with relational databases. (Relational databases version information as facts in rows and tables with logical hyperlinks among them). NoSQL is a category of DBMS which can be non-relational and typically do now no longer use SQL. There are 5 realistic variations between SQL and NoSQL:
+                                {<br />}
+                                * Language * Scalability *Structure * Properties * Support and communities.</p>
                         </div>
                         <div>
-                            <h3 className="font-extrabold text-3xl text-white">How does the Private route work?</h3>
-                            <p className="mt-1 text-white dark:text-gray-400">Private Routes in React Router (additionally referred to as Protected Routes) require a person being legal to go to a route (read: page). So if a person isn't legal for a particular page, they can not get admission to it. The maximum not unusualplace instance is authentication in a React software wherein a person can simplest get admission to the covered pages whilst they may be legal (this means that in this example being authenticated). Authorization is going past authentication though. For instance, a person also can have roles and permissions which provide a person get admission to to precise regions of the software.</p>
+                            <h3 className="font-extrabold text-3xl text-white">What is JWT, and how does it work?</h3>
+                            <p className="mt-1 text-white dark:text-gray-400">
+                                JSON Web Token (JWT) is an open standard (RFC 7519) for securely transmitting records among events as JSON object.
+                                {<br />}
+                                It is compact, readable and digitally signed the usage of a non-public key/ or a public key pair with the aid of using the Identity Provider(IdP). So the integrity and authenticity of the token may be proven with the aid of using different events involved.
+                                {<br />}
+                                The cause of the usage of JWT isn't always to cover facts however to make sure the authenticity of the facts. JWT is signed and encoded, now no longer encrypted.
+                            </p>
                         </div>
                         <div>
-                            <h3 className="font-extrabold text-3xl text-white">What is the node? how does node node work?</h3>
-                            <p className="mt-1 text-white dark:text-gray-400">JavaScript is one of the maximum famous programming languages withinside the world. It powers hundreds of thousands of web sites today, and it has attracted droves of builders and architects to construct functions for the web. If you`re new to programming, JavaScript is without problems one of the first-class programming languages to get below your belt.
-
-                                For its first 20 years, JavaScript become used specifically for client-aspect scripting. Since JavaScript might be used best inside the  tag, builders needed to paintings in more than one languages and frameworks among the front-cease and back-cease components. Later got here Node.js, that is a run-time surroundings that consists of the whole thing required to execute a application written in JavaScript.</p>
+                            <h3 className="font-extrabold text-3xl text-white">What is the difference between javascript and Node JS?</h3>
+                            <p className="mt-1 text-white dark:text-gray-400">
+                                1. NodeJS :
+                                NodeJS is a cross-platform and opensource Javascript runtime surroundings that lets in the javascript to be run at the server-side. Nodejs lets in Javascript code to run outdoor the browser. Nodejs comes with quite a few modules and in general utilized in internet development.
+                                {<br />}
+                                2. Javascript:
+                                Javascript is a Scripting language. It is in general abbreviated as JS. It may be stated that Javascript is the up to date model of the ECMA script. Javascript is a high-degree programming language that makes use of the idea of Oops however it's miles primarily based totally on prototype inheritance.
+                            </p>
                         </div>
                         <div>
-                            <h3 className="font-extrabold text-3xl text-white">What Is Google Firebase and Why Should You Use It?</h3>
-                            <p className="mt-1 text-white dark:text-gray-400">Google Firebase is an utility improvement platform that permits builders to create iOS, Android, and Web apps. Here's why you have to use it!
-
-                                Google Firebase gives many functions that pitch it because the go-to backend improvement device for internet and cell apps. It reduces improvement workload and time. And it is an ideal prototyping device. Firebase is simple, lightweight, friendly, and industrially recognized.
-
-                                Tired of writing dull code on your backend, or cannot even write it at all? Try Google Firebase. So what is Google Firebase, and why have to you construct your app round it?</p>
+                            <h3 className="font-extrabold text-3xl text-white">How does NodeJS handle multiple requests at the same time?</h3>
+                            <p className="mt-1 text-white dark:text-gray-400">
+                                NodeJS gets a couple of purchaser requests and locations them into EventQueue. NodeJS is constructed with the idea of occasion-pushed architecture. NodeJS has its very own EventLoop that's an countless loop that gets requests and procedures them. EventLoop is the listener for the EventQueue.
+                                {<br />}
+                                If NodeJS can technique the request with out I/O blocking off then the occasion loop might itself technique the request and sends the reaction returned to the purchaser through itself. But, it's far feasible to technique a couple of requests parallelly the use of the NodeJS cluster module or worker_threads module.
+                            </p>
                         </div>
 
                     </div>
