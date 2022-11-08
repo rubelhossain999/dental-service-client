@@ -25,21 +25,13 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 setError();
-                console.log(user);
                 form.reset();
-                if(user?.emailVerified){
                     navigator(from, {replace: true});
                     toast.success("User Login is Success!!");
-                } else{
-                    toast.error('Email is NOT Verified, Please Check Mail Address!')
-                }
             })
             .catch(error => {
                 console.error(error);
                 setError(error.message)
-            })
-            .finally(() => {
-                setLoading(false)
             })
     }
     return (
@@ -49,12 +41,12 @@ const Login = () => {
                     <h1 className="text-2xl font-bold text-center">Login</h1>
                     <form onSubmit={handlelogin} className="space-y-6 ng-untouched ng-pristine ng-valid">
                         <div className="space-y-1 text-sm">
-                            <label className="block text-gray-400">Username</label>
-                            <input type="email" name="email" id="username" placeholder="Type Registration Mail" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-white dark:text-gray-100 focus:dark:border-violet-400" required />
+                            <label className="block text-black">Username</label>
+                            <input type="email" name="email" id="username" placeholder="Type Registration Mail" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-white text-black focus:dark:border-violet-400" required />
                         </div>
                         <div className="space-y-1 text-sm">
-                            <label className="block text-gray-400">Password</label>
-                            <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-white dark:text-gray-100 focus:dark:border-violet-400" required />
+                            <label className="block text-black">Password</label>
+                            <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-white text-black focus:dark:border-violet-400" required />
                             <div className="flex justify-end text-xs dark:text-gray-400">
                                 <Link rel="noopener noreferrer" to="/forgotpass">Forgot Password?</Link>
                             </div>

@@ -1,6 +1,9 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import app from '../Firebase/Firebase.config';
+
+
+
 export const AuthContext = createContext();
 
 const auth = getAuth(app);
@@ -8,38 +11,41 @@ const auth = getAuth(app);
 const AuthContextdata = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [datas, setData] = useState(); 
+    const [datas, setData] = useState();
 
 
-// 1. User Registration
-const userRegistration = (email, password) => {
-    setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
-}
+    // 1. User Registration
+    const userRegistration = (email, password) => {
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
 
-// 2. User Login Form
-const userLogin = (email, password) => {
-    setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
-}
+    // 2. User Login Form
+    const userLogin = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    }
 
-// 3. User LogOut
-const userLogOut = () => {
-    setLoading(true);
-    return signOut(auth);
-}
-
+    // 3. User LogOut
+    const userLogOut = () => {
+        setLoading(true);
+        return signOut(auth);
+    }
+    // 4. Google Login System
+    const googleLoginPop = (provider) => {
+        return signInWithPopup(auth, provider);
+    }
 
 
     /// Data load From Mongodb for the UI
-    useEffect(()=>{
+    useEffect(() => {
         const url = "http://localhost:5000/users";
         fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            setData(data);
-        })
-        
+            .then(res => res.json())
+            .then(data => {
+                setData(data);
+            })
+
     }, []);
     /// unsubscribe with loader
     useEffect(() => {
@@ -59,7 +65,7 @@ const userLogOut = () => {
     }, []);
 
 
-    const authINFO = { user, loading, datas, userRegistration, userLogin, userLogOut  }
+    const authINFO = { user, loading, datas, userRegistration, userLogin, userLogOut, googleLoginPop }
     return (
         <AuthContext.Provider value={authINFO}>
             {children}

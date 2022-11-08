@@ -5,9 +5,9 @@ import Home from "../Components/UIDesign/Pages/Home";
 import Main from "../Components/UIDesign/Pages/Main";
 import Reviews from "../Components/UIDesign/Pages/Reviews";
 import Services from "../Components/UIDesign/Pages/Services";
-import ThreeService from "../Components/UIDesign/Pages/ThreeService";
 import Forgotpass from "../Firebase/AuthPages/Forgotpass";
 import Login from "../Firebase/AuthPages/Login";
+import Profile from "../Firebase/AuthPages/Profile";
 import Signup from "../Firebase/AuthPages/Signup";
 
 const router = createBrowserRouter([
@@ -26,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: '/reviews',
         element: <Reviews></Reviews>
+      },
+      {
+        path: '/profile',
+        element: <Profile></Profile>
       },
       {
         path: '/blogs',
