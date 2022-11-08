@@ -28,7 +28,7 @@ const Hero = () => {
                                 I am a professional dentist. Having been providing dental services to the American market for the past five years, I have real experience.
                             </p>
                             
-                               <button className='btn border-none bg-cyan-700 font-medium text-base text-white'>My Service</button>
+                               <button className='btn border-none bg-cyan-700 font-medium text-base text-white'>Give Review</button>
                         </div>
                         <div className="w-full max-w-full xl:px-8 xl:w-5/12">
                             <img src='https://i.ibb.co/KwvbdM1/rIGHT.png' alt='img'></img>

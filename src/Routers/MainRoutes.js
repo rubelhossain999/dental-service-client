@@ -5,6 +5,7 @@ import Home from "../Components/UIDesign/Pages/Home";
 import Main from "../Components/UIDesign/Pages/Main";
 import Reviews from "../Components/UIDesign/Pages/Reviews";
 import Services from "../Components/UIDesign/Pages/Services";
+import ThreeService from "../Components/UIDesign/Pages/ThreeService";
 import Forgotpass from "../Firebase/AuthPages/Forgotpass";
 import Login from "../Firebase/AuthPages/Login";
 import Signup from "../Firebase/AuthPages/Signup";
@@ -15,7 +16,8 @@ const router = createBrowserRouter([
     element: <Main />,
     children: [
       {
-        path: '/', element: <Home></Home>
+        path: '/',
+        element: <Home></Home>
       },
       {
         path: '/services',
