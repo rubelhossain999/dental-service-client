@@ -39,7 +39,7 @@ const AuthContextdata = ({ children }) => {
 
     /// Data load From Mongodb for the UI
     useEffect(() => {
-        const url = "http://localhost:5000/users";
+        const url = "https://dental-service-server.vercel.app/users";
         fetch(url)
             .then(res => res.json())
             .then(data => {

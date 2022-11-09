@@ -7,7 +7,7 @@ const ThreeService = () => {
 
 
     useEffect(() => {
-        const url = "http://localhost:5000/threedata";
+        const url = "https://dental-service-server.vercel.app/threedata";
         fetch(url)
             .then(res => res.json())
             .then(data => {
