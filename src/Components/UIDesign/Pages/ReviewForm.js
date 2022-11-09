@@ -1,6 +1,10 @@
-import React from 'react';
+import { isEditable } from '@testing-library/user-event/dist/utils';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../ContextAPI/AuthContextdata';
 
 const ReviewForm = () => {
+    const { user } = useContext(AuthContext);
+    console.log(user);
     return (
         <div className='p-2'>
             <div className="sm:mt-0 lg:w-9/12 m-auto">
@@ -17,27 +21,29 @@ const ReviewForm = () => {
                                     <div className="grid grid-cols-6 gap-6">
                                         <div className="col-span-6">
                                             <div className="space-y-1 text-sm">
-                                                <label className="block text-black">Title</label>
-                                                <input type="text" name="name" id="username" placeholder="Service Title" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
+                                                <label className="block text-black">Your Name</label>
+                                                <input type="text" name="name" id="username" placeholder="Name" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" defaultValue={user?.displayName} required />
+                                            </div>
+                                        </div>
+                                        <div className="col-span-6">
+                                            <div className="space-y-1 text-sm">
+                                                <label className="block text-black">Email</label>
+                                                <input type="text" name="email" id="email" placeholder="email" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" defaultValue={user?.email} readOnly required />
                                             </div>
                                         </div>
                                         <div className="col-span-6">
                                             <div className="space-y-1 text-sm">
                                                 <label className="block text-black">Description</label>
-                                                <textarea type="text" name="description" id="username" placeholder="Service Description" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
+                                                <textarea type="text" name="description" id="username" placeholder="Description" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
                                             </div>
                                         </div>
                                         <div className="col-span-6">
-                                            <div className="space-y-1 text-sm">
-                                                <label className="block text-black">Price</label>
-                                                <input type="text" name="price" id="username" placeholder="Service Price" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
-                                            </div>
-                                        </div>
-                                        <div className="col-span-6">
-                                            <div className="space-y-1 text-sm">
-                                                <label className="block text-black">Picture URL</label>
-                                                <input type="text" name="price" id="username" placeholder="Service Picture" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
-                                            </div>
+                                            {user?.uid ? <div><img src={user?.image} alt="" /></div> :
+                                                <div className="space-y-1 text-sm">
+                                                    <label className="block text-black">Picture URL</label>
+                                                    <input type="text" name="price" id="username" placeholder="Service Picture" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
+                                                </div>
+                                            }
                                         </div>
                                     </div>
                                 </div>
