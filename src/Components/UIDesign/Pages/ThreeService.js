@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ThreeService = () => {
 
-    const [threedata, setThreedata] = useState()
+    const [threedata, setThreedata] = useState();
 
 
     useEffect(() => {

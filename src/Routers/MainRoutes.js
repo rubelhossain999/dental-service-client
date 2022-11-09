@@ -28,8 +28,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/detailsService/:id',
-        element: <DetailsService></DetailsService>,
-        loader: ({params}) => fetch(`https://dental-service-server.vercel.app/users/${params.id}`)
+        element: <PrivateRoute><DetailsService></DetailsService></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://dental-service-server.vercel.app/users/${params.id}`)
       },
       {
         path: '/reviews',
