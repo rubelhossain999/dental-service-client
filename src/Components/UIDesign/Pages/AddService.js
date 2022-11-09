@@ -1,13 +1,27 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const AddService = () => {
-    const [service, setService] = useState();
+    const [service, setService] = useState({});
 
     const handleAddservice= event => {
         event.preventDefault();
         console.log(service);
 
-        fetch('')
+        fetch('https://dental-service-server.vercel.app/users', {
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(service)
+        })
+        .then( res => res.json())
+        .then(service => {
+            if(service.acknowledged){
+                toast.success("New Service Add is Success!!");
+                event.target.reset('');
+            }
+        })
     }
 
     const handleServiceBluer = event => {
@@ -43,19 +57,19 @@ const AddService = () => {
                                         <div className="col-span-6">
                                             <div className="space-y-1 text-sm">
                                                 <label className="block text-black">Description</label>
-                                                <textarea onBlur={handleServiceBluer} type="text" name="description" id="username" placeholder="Service Description" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
+                                                <textarea onBlur={handleServiceBluer} type="text" name="description" id="description" placeholder="Service Description" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
                                             </div>
                                         </div>
                                         <div className="col-span-6">
                                             <div className="space-y-1 text-sm">
                                                 <label className="block text-black">Price</label>
-                                                <input onBlur={handleServiceBluer} type="text" name="price" id="username" placeholder="Service Price" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
+                                                <input onBlur={handleServiceBluer} type="text" name="price" id="price" placeholder="Service Price" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
                                             </div>
                                         </div>
                                         <div className="col-span-6">
                                             <div className="space-y-1 text-sm">
                                                 <label className="block text-black">Picture URL</label>
-                                                <input onBlur={handleServiceBluer} type="text" name="price" id="username" placeholder="Service Picture" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
+                                                <input onBlur={handleServiceBluer} type="text" name="image" id="image" placeholder="Service Picture" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
                                             </div>
                                         </div>
                                     </div>
