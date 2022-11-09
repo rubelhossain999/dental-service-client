@@ -44,11 +44,11 @@ const ThreeService = () => {
                                         <p className="text-2xl font-bold leading-5">{threedata.name}</p>
                                     </a>
                                     <p className="mb-4 text-gray-700">
-                                        {threedata.description.slice(0, 400) + '...'} <Link className="text-orange-600" to={`/users/${threedata._id}`}>See More</Link>
+                                        {threedata.description.slice(0, 400) + '...'} <Link className="text-orange-600" to={`/detailsService/${threedata._id}`}>See More</Link>
                                     </p>
                                     <div className="flex space-x-4">
                                         <div className="mr-2">
-                                            <button className='btn-warning px-2 py-1 font-medium uppercase rounded-md'>Details</button>
+                                            <button className='btn-warning px-2 py-1 font-medium uppercase rounded-md'><Link to={`/detailsService/${threedata._id}`}>Details</Link></button>
                                         </div>
                                         <div className="mr-2">
                                             <button className='btn-success px-2 py-1 rounded-md'>Price: 45 USD</button>

@@ -12,6 +12,7 @@ const SocialAuth = () => {
 
     const googleprovider = new GoogleAuthProvider();
 
+     
     const from = location.state?.from?.pathname || '/';
     const handleGooglePopup = () => {
         googleLoginPop(googleprovider)

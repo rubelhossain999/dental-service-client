@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddService from "../Components/UIDesign/Pages/AddService";
 import Blogs from "../Components/UIDesign/Pages/Blogs";
+import DetailsService from "../Components/UIDesign/Pages/DetailsService";
 import Error from "../Components/UIDesign/Pages/Error";
 import Home from "../Components/UIDesign/Pages/Home";
 import Main from "../Components/UIDesign/Pages/Main";
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
       {
         path: '/services',
         element: <Services></Services>
+      },
+      {
+        path: '/detailsService/:id',
+        element: <DetailsService></DetailsService>,
+        loader: ({params}) => fetch(`https://dental-service-server.vercel.app/users/${params.id}`)
       },
       {
         path: '/reviews',

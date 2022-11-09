@@ -31,11 +31,11 @@ const Services = () => {
                                     <p className="text-2xl font-bold leading-5">{datas.name}</p>
                                 </a>
                                 <p className="mb-4 text-gray-700">
-                                    {datas.description.slice(0, 400) + '...' } <Link className="text-orange-600" to={`/users/${datas._id}`}>See More</Link>
+                                    {datas.description.slice(0, 400) + '...' } <Link className="text-orange-600" to={`/detailsService/${datas._id}`}>See More</Link>
                                 </p>
                                 <div className="flex space-x-4">
                                     <div className="mr-2">
-                                        <button className='btn-warning px-2 py-1 font-medium uppercase rounded-md'>Details</button>
+                                        <button className='btn-warning px-2 py-1 font-medium uppercase rounded-md'><Link to={`/detailsService/${datas._id}`}>Details</Link></button>
                                     </div>
                                     <div className="mr-2">
                                         <button className='btn-success px-2 py-1 rounded-md'>Price: {datas.price} USD</button>
