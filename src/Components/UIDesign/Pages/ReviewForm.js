@@ -38,12 +38,10 @@ const ReviewForm = () => {
                                             </div>
                                         </div>
                                         <div className="col-span-6">
-                                            {user?.uid ? <div><img src={user?.image} alt="" /></div> :
-                                                <div className="space-y-1 text-sm">
-                                                    <label className="block text-black">Picture URL</label>
-                                                    <input type="text" name="price" id="username" placeholder="Service Picture" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
-                                                </div>
-                                            }
+                                            <div className="space-y-1 text-sm">
+                                                <label className="block text-black">Picture URL</label>
+                                                <input type="text" name="price" id="username" placeholder="Service Picture" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
