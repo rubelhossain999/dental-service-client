@@ -1,22 +1,24 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../ContextAPI/AuthContextdata';
 
 const SocialAuth = () => {
     const { googleLoginPop } = useContext(AuthContext)
-    const navigator = useNavigate()
+    const navigator = useNavigate();
+    const location = useLocation();
 
 
     const googleprovider = new GoogleAuthProvider();
 
+    const from = location.state?.from?.pathname || '/';
     const handleGooglePopup = () => {
         googleLoginPop(googleprovider)
         .then( res => {
             const user = res.user;
             toast.success("User Login is Success!!");
-            navigator('/profile')
+            navigator(from, {replace: true});
         })
         .catch(error => {
             toast.error(error)
