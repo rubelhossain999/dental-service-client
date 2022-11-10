@@ -51,7 +51,7 @@ const AuthContextdata = ({ children }) => {
 
     /// Data load From Mongodb for the UI
     useEffect(() => {
-        const url = "http://localhost:5000/reviews/";
+        const url = "https://dental-service-server.vercel.app/reviews/";
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -75,7 +75,7 @@ const AuthContextdata = ({ children }) => {
     }, []);
 
 
-    const authINFO = { user, loading, datas,reviewsdata, userRegistration, userLogin, userLogOut, googleLoginPop }
+    const authINFO = { user, loading, datas, reviewsdata, userRegistration, userLogin, userLogOut, googleLoginPop }
     return (
         <AuthContext.Provider value={authINFO}>
             {children}

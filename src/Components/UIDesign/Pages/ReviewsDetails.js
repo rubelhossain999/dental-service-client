@@ -12,7 +12,7 @@ const ReviewsDetails = () => {
     const handleReviewUpdate = event => {
         event.preventDefault();
 
-        fetch(`http://localhost:5000/reviews/${reviewupdate._id}`, {
+        fetch(`https://dental-service-server.vercel.app/reviews/${reviewupdate._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

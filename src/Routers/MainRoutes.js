@@ -39,7 +39,7 @@ const router = createBrowserRouter([
       {
         path: '/reviewdetails/:id',
         element:<PrivateRoute><ReviewsDetails></ReviewsDetails></PrivateRoute> ,
-        loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`)
+        loader: ({ params }) => fetch(`https://dental-service-server.vercel.app/reviews/${params.id}`)
       },
       {
         path: '/profile',

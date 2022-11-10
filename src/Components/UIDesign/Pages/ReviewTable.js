@@ -14,7 +14,7 @@ const ReviewTable = ({ review }) => {
     const handleDeletereview = review => {
         const agree = window.confirm(`Are you Sure This Review Deleted!! ${review.name}`);
          if(agree){
-             fetch(`http://localhost:5000/reviews/${review._id}`, {
+             fetch(`https://dental-service-server.vercel.app/reviews/${review._id}`, {
                  method: 'DELETE'
              })
              .then(res => res.json())

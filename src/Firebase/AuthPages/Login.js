@@ -23,11 +23,33 @@ const Login = () => {
         userLogin(email, password)
             .then(result => {
                 const user = result.user;
+
+                const currentUser = {
+                    email: user.email
+                }
+                console.log(currentUser);
+
+                // Get JWT Token
+                fetch('https://dental-service-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type' : 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+
+                })
+                .then( res => res.json())
+                .then( data => {
+                    console.log(data);
+                    localStorage.setItem('DentalToken', data.token)
+                    navigator(from, {replace: true});
+                })
+
+
                 console.log(user);
                 form.reset();
                 setError('');
                 toast.success("User Login is Success!!");
-                navigator(from, {replace: true});
             })
             .catch(error => {
                 console.error(error);
