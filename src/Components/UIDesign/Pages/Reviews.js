@@ -21,13 +21,13 @@ const Reviews = () => {
                 <>
                     <div className="container p-2 mx-auto sm:p-4 dark:text-gray-100">
                         <div className='bg-slate-500 mb-10 p-5 rounded-lg flex text-center text-stone-50 font-bold text-3xl'>
-                            <p>You Have Items</p>
+                            <p>You Have Reviews Items</p>
                         </div>
                         <div className="overflow-x-auto">
                             <table className="min-w-full text-xs">
                                 <thead className="dark:bg-gray-700">
                                     <tr className="text-left">
-                                        <th className="p-3">Image</th>
+                                        <th className="p-3">Rating</th>
                                         <th className="p-3">Service Title</th>
                                         <th className="p-3">Review Comment</th>
                                         <th className="p-3">Time</th>
@@ -44,7 +44,14 @@ const Reviews = () => {
 
                 </>
                 :
-                <p className='text-3xl text-center text-black font-bold mt-10'>You don't have any reviews at the moment</p>}
+                <>
+                    <div className='bg-slate-500 mb-10 p-5 rounded-lg flex text-center text-stone-50 font-bold text-3xl'>
+                        <p>You Have Reviews Items</p>
+                    </div>
+                    <p className='text-3xl text-center text-black font-bold mt-10'>You don't have any reviews at the moment</p>
+                </>
+
+            }
         </div>
     );
 };

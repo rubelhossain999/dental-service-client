@@ -12,6 +12,7 @@ const AuthContextdata = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [datas, setData] = useState();
+    const [reviewsdata, setReviewsdata] = useState();
 
 
     // 1. User Registration
@@ -47,6 +48,18 @@ const AuthContextdata = ({ children }) => {
             })
 
     }, []);
+
+    /// Data load From Mongodb for the UI
+    useEffect(() => {
+        const url = "http://localhost:5000/reviews/";
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                setReviewsdata(data);
+            })
+
+    }, []);
+
     /// unsubscribe with loader
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -62,7 +75,7 @@ const AuthContextdata = ({ children }) => {
     }, []);
 
 
-    const authINFO = { user, loading, datas, userRegistration, userLogin, userLogOut, googleLoginPop }
+    const authINFO = { user, loading, datas,reviewsdata, userRegistration, userLogin, userLogOut, googleLoginPop }
     return (
         <AuthContext.Provider value={authINFO}>
             {children}

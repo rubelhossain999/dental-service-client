@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../ContextAPI/AuthContextdata';
 import { Link } from 'react-router-dom';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const Services = () => {
     const { datas } = useContext(AuthContext);
@@ -12,13 +14,15 @@ const Services = () => {
                 {
                     datas?.map(datas => <p key={datas._id}>
                         <div className="overflow-hidden transition-shadow duration-300 bg-slate-200 rounded">
-                            <a href="/" aria-label="Article">
-                                <img
-                                    src={datas.image}
-                                    className="object-cover w-full h-64 rounded"
-                                    alt=""
-                                />
-                            </a>
+                            <PhotoProvider>
+                                <PhotoView src={datas.image}>
+                                    <img
+                                        src={datas.image}
+                                        className="object-cover w-full h-64 rounded"
+                                        alt=""
+                                    />
+                                </PhotoView>
+                            </PhotoProvider>
                             <div className="py-5 p-2">
                                 <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
                                     13 Jul 2022
@@ -31,7 +35,7 @@ const Services = () => {
                                     <p className="text-2xl font-bold leading-5">{datas.name}</p>
                                 </a>
                                 <p className="mb-4 text-gray-700">
-                                    {datas.description.slice(0, 400) + '...' } <Link className="text-orange-600" to={`/detailsService/${datas._id}`}>See More</Link>
+                                    {datas.description.slice(0, 400) + '...'} <Link className="text-orange-600" to={`/detailsService/${datas._id}`}>See More</Link>
                                 </p>
                                 <div className="flex space-x-4">
                                     <div className="mr-2">

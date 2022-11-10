@@ -6,6 +6,7 @@ import Error from "../Components/UIDesign/Pages/Error";
 import Home from "../Components/UIDesign/Pages/Home";
 import Main from "../Components/UIDesign/Pages/Main";
 import Reviews from "../Components/UIDesign/Pages/Reviews";
+import ReviewsDetails from "../Components/UIDesign/Pages/ReviewsDetails";
 import Services from "../Components/UIDesign/Pages/Services";
 import Forgotpass from "../Firebase/AuthPages/Forgotpass";
 import Login from "../Firebase/AuthPages/Login";
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
       {
         path: '/reviews',
         element: <PrivateRoute><Reviews></Reviews></PrivateRoute>
+      },
+      {
+        path: '/reviewdetails/:id',
+        element:<PrivateRoute><ReviewsDetails></ReviewsDetails></PrivateRoute> ,
+        loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`)
       },
       {
         path: '/profile',
