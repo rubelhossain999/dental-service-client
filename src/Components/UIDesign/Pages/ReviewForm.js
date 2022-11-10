@@ -1,10 +1,46 @@
-import { isEditable } from '@testing-library/user-event/dist/utils';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../ContextAPI/AuthContextdata';
 
-const ReviewForm = () => {
+const ReviewForm = ({ servicetitle }) => {
+    const {_id} = useLoaderData();
     const { user } = useContext(AuthContext);
-    console.log(user);
+
+    const handleReviewadded = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = user?.email || "Unregistered";
+        const description = form.description.value;
+        const image = form.image.value;
+
+        const review = {
+            reviewID: _id,
+            review: servicetitle,
+            name,
+            email,
+            image,
+            description
+        }
+
+        fetch('http://localhost:5000/reviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success("Review add is Success!!");
+                    form.reset('');
+                }
+            })
+            .catch(error => console.log(error))
+    }
+
     return (
         <div className='p-2'>
             <div className="sm:mt-0 lg:w-9/12 m-auto">
@@ -15,14 +51,14 @@ const ReviewForm = () => {
                         </div>
                     </div>
                     <div className="md:col-span-2 md:mt-0">
-                        <form action="#" method="POST">
+                        <form onSubmit={handleReviewadded}>
                             <div className="overflow-hidden shadow sm:rounded-md">
                                 <div className="bg-slate-300 px-4 py-5 sm:p-6">
                                     <div className="grid grid-cols-6 gap-6">
                                         <div className="col-span-6">
                                             <div className="space-y-1 text-sm">
                                                 <label className="block text-black">Your Name</label>
-                                                <input type="text" name="name" id="username" placeholder="Name" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" defaultValue={user?.displayName} required />
+                                                <input type="text" name="name" id="name" placeholder="Name" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" defaultValue={user?.displayName} required />
                                             </div>
                                         </div>
                                         <div className="col-span-6">
@@ -34,13 +70,13 @@ const ReviewForm = () => {
                                         <div className="col-span-6">
                                             <div className="space-y-1 text-sm">
                                                 <label className="block text-black">Description</label>
-                                                <textarea type="text" name="description" id="username" placeholder="Description" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
+                                                <textarea type="text" name="description" id="description" placeholder="Description" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
                                             </div>
                                         </div>
                                         <div className="col-span-6">
                                             <div className="space-y-1 text-sm">
                                                 <label className="block text-black">Picture URL</label>
-                                                <input type="text" name="price" id="username" placeholder="Service Picture" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
+                                                <input type="text" name="image" id="image" placeholder="Service Picture" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" required />
                                             </div>
                                         </div>
                                     </div>

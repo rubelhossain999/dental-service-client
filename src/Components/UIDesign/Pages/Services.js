@@ -21,7 +21,7 @@ const Services = () => {
                             </a>
                             <div className="py-5 p-2">
                                 <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-                                    13 Jul 2020
+                                    13 Jul 2022
                                 </p>
                                 <a
                                     href="/"
