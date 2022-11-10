@@ -8,19 +8,12 @@ const Reviews = () => {
     const [review, setReview] = useState({});
     useTitle('Reviews')
 
+    const url = `https://dental-service-server.vercel.app/reviews?email=${user.email}`;
     useEffect(() => {
-        fetch(`https://dental-service-server.vercel.app/reviews?email=${user.email}`, {
-
-        headers: {
-            authorization: `Bearer ${localStorage.getItem('DentalToken')}`
-        }
-
-        })
+        fetch(url)
             .then(res => res.json())
             .then(data => {
-
-                console.log("object", data);
-                //setReview(data);
+                setReview(data);
             })
     }, [user?.email]);
 
