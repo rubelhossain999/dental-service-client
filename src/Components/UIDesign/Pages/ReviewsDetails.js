@@ -1,19 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const ReviewsDetails = () => {
     const reviewupdate = useLoaderData();
 
+    useTitle('Review Detail')
+    const [updateReview, setUpdateReview] = useState(reviewupdate);
+
     const handleReviewUpdate = event => {
-        console.log("handleReviewUpdate");
+        event.preventDefault();
+
+        fetch(`http://localhost:5000/reviews/${reviewupdate._id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateReview)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if(data.acknowledged){
+                    toast.success('Review Update is Success!!');
+                }
+                console.log(data);
+            })
+
     }
+
+    const handleUpdateBlur = event => {
+        const field = event.target.name;
+        const value = event.target.value;
+        const newservice = { ...updateReview };
+        newservice[field] = value;
+        setUpdateReview(newservice);
+
+    }
+
     return (
         <div className='p-2'>
             <div className="sm:mt-0 lg:w-9/12 m-auto">
                 <div className="md:grid md:grid-cols-3 lg:grid-cols-2">
                     <div className="md:col-span-1">
                         <div className="px-4 sm:px-0">
-                            <h3 className="text-2xl pt-3 font-medium leading-6 text-white">Add Dental Service</h3>
+                            <h3 className="text-2xl pt-3 pb-5 font-medium leading-6 text-black">Update user Review: <samp className='text-amber-600'>{reviewupdate.review}</samp></h3>
                         </div>
                     </div>
                     <div className="md:col-span-2 md:mt-0">
@@ -24,25 +55,25 @@ const ReviewsDetails = () => {
                                         <div className="col-span-6">
                                             <div className="space-y-1 text-sm">
                                                 <label className="block text-black">Your Name</label>
-                                                <input type="text" name="name" id="name" placeholder="Name" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" defaultValue={reviewupdate.name} required />
+                                                <input onChange={handleUpdateBlur} type="text" name="name" id="name" placeholder="Name" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" defaultValue={reviewupdate.name} required />
                                             </div>
                                         </div>
                                         <div className="col-span-6">
                                             <div className="space-y-1 text-sm">
                                                 <label className="block text-black">Email</label>
-                                                <input type="text" name="email" id="email" placeholder="email" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" defaultValue={reviewupdate.email} readOnly required />
+                                                <input onChange={handleUpdateBlur} type="text" name="email" id="email" placeholder="email" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" defaultValue={reviewupdate.email} readOnly required />
                                             </div>
                                         </div>
                                         <div className="col-span-6">
                                             <div className="space-y-1 text-sm">
                                                 <label className="block text-black">Description</label>
-                                                <textarea type="text" name="description" id="description" placeholder="Description" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" defaultValue={reviewupdate.description} required />
+                                                <textarea onChange={handleUpdateBlur} type="text" name="description" id="description" placeholder="Description" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" defaultValue={reviewupdate.description} required />
                                             </div>
                                         </div>
                                         <div className="col-span-6">
                                             <div className="space-y-1 text-sm">
                                                 <label className="block text-black">Picture URL</label>
-                                                <input type="text" name="image" id="image" placeholder="Service Picture" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" defaultValue={reviewupdate.image}/>
+                                                <input onChange={handleUpdateBlur} type="text" name="image" id="image" placeholder="Service Picture" className="w-full px-4 py-3 rounded-md dark:border-gray-700text-black focus:dark:border-violet-400 outline-none" defaultValue={reviewupdate.image} />
                                             </div>
                                         </div>
                                     </div>

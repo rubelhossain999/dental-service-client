@@ -1,10 +1,12 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import ReviewForm from './ReviewForm';
 
 const DetailsService = () => {
     const serviceDetails = useLoaderData();
     const servicetitle = serviceDetails.name;
+    useTitle('Detail Service')
     return (
         <div className='lg:w-9/12 m-auto mt-10 mb-10'>
             <div className='border-b-2 border-orange-400'>

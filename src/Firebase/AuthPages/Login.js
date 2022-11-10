@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useTitle from '../../Components/hooks/useTitle';
 import { AuthContext } from '../../ContextAPI/AuthContextdata';
 import SocialAuth from './SocialAuth';
 
@@ -9,6 +10,7 @@ const Login = () => {
     const [error, setError] = useState('');
     const location = useLocation();
     const navigator = useNavigate();
+    useTitle('Login')
 
     const from = location.state?.from?.pathname || '/';
     const handlelogin = event => {

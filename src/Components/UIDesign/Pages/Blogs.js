@@ -1,6 +1,11 @@
 import React from 'react';
+import useTitle from '../../hooks/useTitle';
 
 const Blogs = () => {
+
+    useTitle('Blog')
+
+
     return (
         <div className='bg-slate-600 dark:bg-gray-800'>
 

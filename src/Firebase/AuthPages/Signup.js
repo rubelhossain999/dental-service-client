@@ -1,13 +1,15 @@
 import { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import useTitle from '../../Components/hooks/useTitle';
 import { AuthContext } from '../../ContextAPI/AuthContextdata';
 import SocialAuth from './SocialAuth';
 
 const Signup = () => {
     const {userRegistration} = useContext(AuthContext);
     const [error, setError] = useState();
-    const navigator = useNavigate()
+    const navigator = useNavigate();
+    useTitle('Sign Up')
 
     const handleSignup = event => {
         event.preventDefault()

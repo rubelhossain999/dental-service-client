@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
 const ReviewTable = ({ review }) => {
+    console.log(review);
 
     const[reviewUser, setReviewUser] = useState(review);
     
@@ -31,6 +32,9 @@ const ReviewTable = ({ review }) => {
     return (
         <tbody>
             <tr className="border-b border-opacity-20 dark:border-gray-700 dark:bg-gray-900">
+                <td className="p-3">
+                    <p>{review.review}</p>
+                </td>
                 <td className="p-3 text-orange-400 text-sm">
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
@@ -39,13 +43,13 @@ const ReviewTable = ({ review }) => {
                     <FontAwesomeIcon icon={faStarHalfStroke} />
                 </td>
                 <td className="p-3">
-                    <p>{review.review}</p>
+                    <p>{review.name}</p>
                 </td>
                 <td className="p-3">
                     <p>{review.description.slice(0, 50)} {"..."}</p>
                 </td>
                 <td className="p-3">
-                    <p></p>
+                    <p>12:15pm</p>
                 </td>
                 <td className="p-3 lg:flex cursor-pointer text-sm">
                     <Link to={`/reviewdetails/${review._id}`}>

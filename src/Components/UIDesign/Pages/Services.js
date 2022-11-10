@@ -3,10 +3,12 @@ import { AuthContext } from '../../../ContextAPI/AuthContextdata';
 import { Link } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import useTitle from '../../hooks/useTitle';
 
 const Services = () => {
     const { datas } = useContext(AuthContext);
     console.log(datas);
+    useTitle('Service')
 
     return (
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">

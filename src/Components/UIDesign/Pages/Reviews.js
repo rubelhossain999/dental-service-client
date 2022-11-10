@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../ContextAPI/AuthContextdata';
+import useTitle from '../../hooks/useTitle';
 import ReviewTable from './ReviewTable';
 
 const Reviews = () => {
     const { user } = useContext(AuthContext);
     const [review, setReview] = useState({});
+    useTitle('Reviews')
 
     const url = `http://localhost:5000/reviews?email=${user.email}`;
     useEffect(() => {
@@ -27,6 +29,7 @@ const Reviews = () => {
                             <table className="min-w-full text-xs">
                                 <thead className="dark:bg-gray-700">
                                     <tr className="text-left">
+                                        <th className="p-3">Title</th>
                                         <th className="p-3">Rating</th>
                                         <th className="p-3">Service Title</th>
                                         <th className="p-3">Review Comment</th>
